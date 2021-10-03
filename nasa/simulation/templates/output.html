@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+<link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
+<meta name="apple-mobile-web-app-title" content="CodePen">
+
+<link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+
+<link rel="mask-icon" type="" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
+
+
+  <title>Rendered simulation</title>
+  <meta name="viewport" content="width=device-width">
+  
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/flickity/1.0.0/flickity.css'>
+  
+<style>
+/* external css: flickity.css */
+
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body { 
+  font-family: sans-serif; 
+  overflow: hidden;
+  background: #01070a;
+}
+
+.gallery {
+  vertical-align: middle;
+  background: #01070a;
+}
+
+.gallery-cell {
+  width: 100%;
+  height: 100vh;
+  background: #01070a;
+  counter-increment: gallery-cell;
+}
+.flickity-page-dots {
+  display: none
+}
+img {
+	width:100vw;
+	vertical-align: middle;
+	display: inline-block;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+
+
+.flickity-prev-next-button.next {
+    right: 10px;
+}
+.flickity-prev-next-button.prev {
+    left: 10px;
+}
+.flickity-prev-next-button {
+    position: absolute;
+    top: 50%;
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 50%;
+    background: white;
+    background: hsla(0, 0%, 100%, 0.75);
+    cursor: pointer;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+user agent stylesheet
+button {
+    appearance: auto;
+    -webkit-writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    color: -internal-light-dark(black, white);
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: center;
+    align-items: flex-start;
+    cursor: default;
+    background-color: -internal-light-dark(rgb(239, 239, 239), rgb(59, 59, 59));
+    box-sizing: border-box;
+    margin: 0em;
+    font: 400 13.3333px Arial;
+    padding: 1px 6px;
+    border-width: 2px;
+    border-style: outset;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    border-image: initial;
+}
+</style>
+
+</head>
+
+<body translate="no" >
+<div class="gallery js-flickity"
+  data-flickity-options='{ "wrapAround": true }'>
+	<div class="gallery-cell"><img src='/output/?frame={{ frame }}'></div>
+</div>
+<button class="flickity-prev-next-button next" type="button"><svg viewBox="0 0 100 100"><path d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z" class="arrow" transform="translate(85,100) rotate(180)"></path></svg></button>
+<button class="flickity-prev-next-button prev" type="button"><svg viewBox="0 0 100 100"><path d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z" transform="translate(15,0)" class="arrow" transform="translate(85,100) rotate(180)"></path></svg></button>
+	<p style="position: fixed; color: white; top: 10px;right: 10px;color: white">Water Leakage Sensor: {{ water }}%</p>
+	<p style="position: fixed; color: white; top: 30px;right: 10px;color: white">Fabric Optic Sensor: {{ fos }}%</p>
+	<p style="position: fixed; color: white; top: 50px;right: 10px;color: white">Acoustic Sensor: {{ acoustic }}%</p>
+  <script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
+  <script>
+	  $('.next').click(function() {
+		  window.location.href = '/output/?frame_page={{ frame_next }}';
+	  });
+	  $('.prev').click(function() {
+		  window.location.href = '/output/?frame_page={{ frame_prev }}';
+	  });
+  </script>
+</body>
+
+</html>
